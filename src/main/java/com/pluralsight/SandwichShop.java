@@ -8,9 +8,10 @@ public class SandwichShop {
         String sandwichSize;
         int userAge;
         float discount = 0;
-        float sandwichPrice;
+        float sandwichPrice = 0;
+        float totalCost;
 
-        System.out.println("""
+        System.out.print("""
                 Pick a size of the sandwhich 
                 1: Regular: base price $5.45
                 2: Large: base price $8.95
@@ -21,20 +22,22 @@ public class SandwichShop {
         } else if(sandwichSize.equals("2")){
             sandwichPrice = 9.85f;
         } else{
-            System.out.println("Invalid Input!");
+            System.out.print("Invalid Input!");
             System.exit(0);
         }
 
-        System.out.println("How old are you?: ");
+        System.out.print("How old are you?: ");
         userInput = myScanner.nextLine();
         userAge = Integer.parseInt(userInput);
 
         if(userAge <= 17){
-            discount = 0.1f;
+            discount = 0.1f * sandwichPrice;
         } else if(userAge >= 65){
-            discount = 0.2f;
+            discount = 0.2f * sandwichPrice;
         }
 
+        totalCost = (sandwichPrice - discount);
+        System.out.println("Your total cost of the Sandwich is: $" + totalCost);
 
 
 
