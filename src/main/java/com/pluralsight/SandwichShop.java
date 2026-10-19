@@ -11,7 +11,8 @@ public class SandwichShop {
         int userAge;
         float discount = 0;
         float sandwichPrice = 0;
-        float totalCost;
+        float totalCost = 0;
+        boolean isLoaded = false;
 
         System.out.print("""
                 Pick a size of the sandwich
@@ -27,7 +28,25 @@ public class SandwichShop {
             sandwichPrice = 9.85f;
         } else{ //Exiting the program if the user doesn't input one of the options in correct format.
             System.out.print("Invalid Input!");
-            System.exit(0);
+            System.exit(1);
+        }
+
+        System.out.println("Would you like your sandwich loaded? (yes/no)");
+        userInput = myScanner.nextLine();
+        if(userInput.equalsIgnoreCase("yes")){
+            isLoaded = true;
+            //add if true then add 1 for reg & 1.75 for large
+        } else if(userInput.equalsIgnoreCase("no")){
+            isLoaded = false;
+        } else {
+            System.out.print("Invalid Input");
+            System.exit(1);
+        }
+
+        if(isLoaded && sandwichSize.equals("1")){
+            sandwichPrice += 1;
+        } else if(isLoaded && sandwichSize.equals("2")){
+            sandwichPrice += 1.75f;
         }
 
         System.out.print("How old are you?: ");
